@@ -8,12 +8,19 @@ let package = Package(
 	],
 	products: [.library(name: "PerfectCURL", targets: ["PerfectCURL"])],
 	dependencies: [
-        .package(url: "https://github.com/123FLO321/Perfect-libcurl.git", .branch("swift5")),
         .package(name: "PerfectLib", url: "https://github.com/123FLO321/Perfect.git", .branch("swift5")),
         .package(name: "PerfectThread", url: "https://github.com/123FLO321/Perfect-Thread.git", .branch("swift5")),
 	],
 	targets: [
-		.target(name: "PerfectCURL", dependencies: ["PerfectLib", "PerfectThread"]),
+        .systemLibrary(
+            name: "cURL",
+            pkgConfig: "curl",
+            providers: [
+                .brew(["curl"]),
+                .apt(["libcurl4-openssl-dev"]),
+            ]
+        ),
+		.target(name: "PerfectCURL", dependencies: ["PerfectLib", "PerfectThread", "cURL"]),
 		.testTarget(name: "PerfectCURLTests", dependencies: ["PerfectCURL"])
 	]
 )
