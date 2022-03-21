@@ -8,8 +8,8 @@ let package = Package(
 	],
 	products: [.library(name: "PerfectCURL", targets: ["PerfectCURL"])],
 	dependencies: [
-        .package(name: "PerfectLib", url: "https://github.com/123FLO321/Perfect.git", .branch("swift5")),
-        .package(name: "PerfectThread", url: "https://github.com/123FLO321/Perfect-Thread.git", .branch("swift5")),
+        .package(name: "PerfectLib", url: "https://github.com/SkOODaT/Perfect.git", .branch("SKOODAT")),
+        .package(name: "PerfectThread", url: "https://github.com/SkOODaT/Perfect-Thread.git", .branch("SKOODAT")),
 	],
 	targets: [
         .systemLibrary(
